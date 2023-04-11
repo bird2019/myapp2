@@ -1,4 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
+import Constants from 'expo-constants';
 import React from 'react';
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
@@ -9,9 +10,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import TeacherScreen from './src/screens/TeacherScreen';
 import StudentScreen from './src/screens/StudentScreen';
 
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useHeaderHeight } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
