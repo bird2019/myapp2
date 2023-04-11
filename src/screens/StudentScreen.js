@@ -26,4 +26,4 @@ const stackNavigator = createStackNavigator({
     }
 });
 
-export default stackNavigator;
+

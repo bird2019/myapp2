@@ -31,7 +31,7 @@ const stackNavigator = createStackNavigator({
   }
 });
 
-export default stackNavigator;
+
 //以上
 
 const styles = StyleSheet.create({
