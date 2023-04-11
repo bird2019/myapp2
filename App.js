@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import Constants from 'expo-constants';
 import React from 'react';
 import WelcomeScreen from './src/screens/WelcomeScreen';
@@ -11,24 +10,10 @@ import TeacherScreen from './src/screens/TeacherScreen';
 import StudentScreen from './src/screens/StudentScreen';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
-
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { useHeaderHeight } from '@react-navigation/stack';
 
-const Stack = createStackNavigator();
-
-function HomeTabs() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Teacher" component={TeacherScreen} />
-      <Tab.Screen name="Student" component={StudentScreen} />
-    </Tab.Navigator>
-  );
-}
-
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialTopTabNavigator();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -55,34 +40,27 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
-        <Stack.Screen
-          name="Welcome"
-          component={WelcomeScreen}
-          options={{
-            headerShown: true,
-            title: '盛为学习',
-            headerTitleStyle: {
-              fontFamily: 'Poppins-Bold',
-            },
-          }}
-        />
-        <Stack.Screen
-          name="Home"
-          component={HomeTabs}
-          options={({ route }) => ({
-            title: route.name,
-            headerStyle: {
-              backgroundColor: '#FFC107',
-            },
-            headerTitleStyle: {
-              fontFamily: 'Poppins-Bold',
-            },
-            headerTintColor: '#fff',
-            headerTitleAlign: 'center',
-          })}
-        />
-      </Stack.Navigator>
+      <Tab.Navigator
+        initialRouteName="Teacher"
+        tabBarOptions={{
+          activeTintColor: '#e91e63',
+          labelStyle: {
+            fontSize: 16,
+            fontFamily: 'Poppins-Bold',
+          },
+          indicatorStyle: {
+            backgroundColor: '#e91e63',
+          },
+          style: {
+            backgroundColor: '#fff',
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+        }}
+      >
+        <Tab.Screen name="Teacher" component={TeacherScreen} />
+        <Tab.Screen name="Student" component={StudentScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
